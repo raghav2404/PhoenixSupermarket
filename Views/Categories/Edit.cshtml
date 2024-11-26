@@ -1,0 +1,20 @@
+﻿@using demoMvcCore.Models
+@model Category
+@section title
+{
+    @if (Model is not null)
+    {
+        <h3>Category: @Model.Name </h3>
+        <p> Description: @Model.Description</p>
+    }
+}
+
+@if (Model is not null)
+    {
+    <partial name="_Categories" model="@Model" />
+    }
+
+
+
+
+
