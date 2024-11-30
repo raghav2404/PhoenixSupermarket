@@ -1,0 +1,25 @@
+﻿@using demoMvcCore.ViewModels
+@model ProductsViewModel
+
+@section title
+{
+@if (Model is not null)
+    {
+    <h3>Edit product: @Model.Product.Name</h3>
+        }
+    }
+
+@if (Model != null)
+    {
+<partial name="_Products" model="Model" />
+
+
+    }
+
+
+
+
+
+
+
+

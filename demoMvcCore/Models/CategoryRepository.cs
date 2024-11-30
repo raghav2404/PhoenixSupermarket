@@ -13,10 +13,20 @@ namespace demoMvcCore.Models
 
 		public static void AddCategory(Category category)
 		{
-			var maxId = _categories.Max(x => x.CategoryId);
-			category.CategoryId = maxId + 1;
-			_categories.Add(category);
-		}
+			if (_categories is not null && _categories.Count > 0)
+			{
+				var maxId = _categories.Max(x => x.CategoryId);
+				category.CategoryId = maxId + 1;
+				
+			}
+			else
+			{
+				var maxId = 1;
+				category.CategoryId = maxId;
+			}
+            _categories ??= new List<Category>();	
+            _categories.Add(category);
+        }
         public static Category? GetCategoryById(int categoryId) =>
             _categories.FirstOrDefault(x => x.CategoryId == categoryId);
 

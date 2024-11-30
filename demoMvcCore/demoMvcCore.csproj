@@ -11,12 +11,17 @@
   <ItemGroup>
     <None Remove="Views\Categories\" />
     <None Remove="Models\" />
+    <None Remove="Views\Products\" />
+    <None Remove="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Products\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Models\CategoryRepository.json" />
+    <Content Remove="ViewModels\ProductsViewModel.json" />
   </ItemGroup>
 </Project>
