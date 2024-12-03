@@ -11,12 +11,29 @@
   <ItemGroup>
     <None Remove="Views\Categories\" />
     <None Remove="Models\" />
+    <None Remove="Views\Products\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\Sales\" />
+    <None Remove="ViewModels\Validations\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\Transaction\" />
+    <None Remove="Views\Transactions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Products\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\Sales\" />
+    <Folder Include="ViewModels\Validations\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Transaction\" />
+    <Folder Include="Views\Transactions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Models\CategoryRepository.json" />
+    <Content Remove="ViewModels\ProductsViewModel.json" />
   </ItemGroup>
 </Project>

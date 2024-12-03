@@ -1,0 +1,45 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	modified:   .DS_Store
+#	modified:   Controllers/CategoriesController.cs
+#	deleted:    Models/CategoryRepositoruy.cs
+#	modified:   Program.cs
+#	modified:   Views/Categories/Index.cshtml
+#	modified:   Views/Shared/_Layout.cshtml
+#	modified:   bin/Debug/net8.0/demoMvcCore.dll
+#	modified:   bin/Debug/net8.0/demoMvcCore.pdb
+#	modified:   demoMvcCore.csproj
+#	modified:   obj/Debug/net8.0/demoMvcCore.AssemblyInfo.cs
+#	modified:   obj/Debug/net8.0/demoMvcCore.AssemblyInfoInputs.cache
+#	modified:   obj/Debug/net8.0/demoMvcCore.GeneratedMSBuildEditorConfig.editorconfig
+#	modified:   obj/Debug/net8.0/demoMvcCore.csproj.CoreCompileInputs.cache
+#	modified:   obj/Debug/net8.0/demoMvcCore.csproj.FileListAbsolute.txt
+#	modified:   obj/Debug/net8.0/demoMvcCore.dll
+#	modified:   obj/Debug/net8.0/demoMvcCore.pdb
+#	modified:   obj/Debug/net8.0/ref/demoMvcCore.dll
+#	modified:   obj/Debug/net8.0/refint/demoMvcCore.dll
+#	modified:   wwwroot/css/site.css
+#
+# Untracked files:
+#	Controllers/ProductsController.cs
+#	Controllers/SalesController.cs
+#	Controllers/TransactionsController.cs
+#	Models/CategoryRepository.cs
+#	Models/Product.cs
+#	Models/ProductRepository.cs
+#	Models/Transaction.cs
+#	Models/TransactionsRepository.cs
+#	ViewComponents/
+#	ViewModels/
+#	Views/Products/
+#	Views/Sales/
+#	Views/Shared/Components/
+#	Views/Transactions/
+#	obj/Debug/net8.0/demoMvcCore.sourcelink.json
+#

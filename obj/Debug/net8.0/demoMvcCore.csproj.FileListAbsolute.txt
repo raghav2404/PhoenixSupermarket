@@ -28,3 +28,4 @@
 /Users/raghavrastogi/Projects/demoMvcCore/demoMvcCore/obj/Debug/net8.0/demoMvcCore.pdb
 /Users/raghavrastogi/Projects/demoMvcCore/demoMvcCore/obj/Debug/net8.0/demoMvcCore.genruntimeconfig.cache
 /Users/raghavrastogi/Projects/demoMvcCore/demoMvcCore/obj/Debug/net8.0/ref/demoMvcCore.dll
+/Users/raghavrastogi/Projects/demoMvcCore/demoMvcCore/obj/Debug/net8.0/demoMvcCore.sourcelink.json

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using demoMvcCore.Models;
+﻿using demoMvcCore.Models;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,13 +34,14 @@ namespace demoMvcCore.Controllers
                 CategoryRepository.UpdateCategory(category.CategoryId, category);
                 return RedirectToAction(nameof(Index));
             }
+            ViewBag.OnClick = "edit";
             return View(category);
         }
 
 
         public IActionResult Add()
         {
-            //ViewData["OnClick"] = "add";
+           
             ViewBag.OnClick = "add";
             return View();
         }
@@ -58,11 +55,11 @@ namespace demoMvcCore.Controllers
                 return RedirectToAction(nameof(Index));
 
             }
-
+            ViewBag.OnClick = "add";
             return View(category);
         }
 
-        [HttpGet]
+        
         public IActionResult Delete(int categoryId)
         {
             CategoryRepository.DeleteCategory(categoryId);
