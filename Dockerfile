@@ -8,7 +8,7 @@ WORKDIR /src
 COPY ["demoMvcCore.sln", "./"]
 COPY ["demoMvcCore/demoMvcCore.csproj", "demoMvcCore/"]
 COPY ["UseCases/UseCases.csproj", "UseCases/"]
-COPY ["Plugins.DataStore.SQL.csproj", "Plugins.DataStore.SQL/"]
+COPY ["Plugins.DataStore.SQL/Plugins.DataStore.SQL.csproj", "Plugins.DataStore.SQL/"]
 COPY ["CoreBusiness/CoreBusiness.csproj", "CoreBusiness/"]
 
 # Restore dependencies
