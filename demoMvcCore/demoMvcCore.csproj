@@ -13,15 +13,65 @@
     <None Remove="Models\" />
     <None Remove="Views\Products\" />
     <None Remove="ViewModels\" />
+    <None Remove="Views\Sales\" />
+    <None Remove="ViewModels\Validations\" />
+    <None Remove="ViewComponents\" />
+    <None Remove="Views\Shared\Components\" />
+    <None Remove="Views\Shared\Components\Transaction\" />
+    <None Remove="Views\Transactions\" />
+    <None Remove="Areas\Sales\" />
+    <None Remove="Areas\InventoryManagement\" />
+    <None Remove="Areas\ShipRecieve\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Categories\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Products\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Views\Sales\" />
+    <Folder Include="ViewModels\Validations\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\Components\Transaction\" />
+    <Folder Include="Views\Transactions\" />
+    <Folder Include="Areas\Sales\" />
+    <Folder Include="Areas\InventoryManagement\" />
+    <Folder Include="Areas\ShipRecieve\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Models\CategoryRepository.json" />
     <Content Remove="ViewModels\ProductsViewModel.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UseCases\UseCases.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins\Plugins.DataStore.InMemory.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\Plugins.DataStore.SQL\Plugins.DataStore.SQL.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+    <ProjectReference Include="..\CoreBusiness\CoreBusiness.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="9.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
   </ItemGroup>
 </Project>

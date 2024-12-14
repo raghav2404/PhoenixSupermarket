@@ -1,16 +1,45 @@
-﻿using demoMvcCore.Models;
+﻿using CoreBusiness;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using UseCases.CategoriesUseCase;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
+
 namespace demoMvcCore.Controllers
 {
+
+    [Authorize(Policy = "Inventory")]
     public class CategoriesController : Controller
     {
+        private readonly IViewCategoriesUseCase viewCategoriesUseCase;
+        private readonly IViewSelectedCategoryUseCase viewSelectedCategoryUseCase;
+        private readonly IEditCategoryUseCase editCategoryUseCase;
+        private readonly IAddCategoryUseCase addCategoryUseCase;
+        private readonly IDeleteCategoryUseCase deleteCategoryUseCase;
+
+
+
+        public CategoriesController(
+            IViewCategoriesUseCase viewCategoriesUseCase,
+            IViewSelectedCategoryUseCase viewSelectedCategoryUseCase,
+            IEditCategoryUseCase editCategoryUseCase,
+            IAddCategoryUseCase addCategoryUseCase,
+            IDeleteCategoryUseCase deleteCategoryUseCase)
+        {
+            this.viewCategoriesUseCase = viewCategoriesUseCase;
+            this.viewSelectedCategoryUseCase = viewSelectedCategoryUseCase;
+            this.editCategoryUseCase = editCategoryUseCase;
+            this.addCategoryUseCase = addCategoryUseCase;
+            this.deleteCategoryUseCase = deleteCategoryUseCase;
+        }
+
+
         // GET: /<controller>/
         public IActionResult Index()
         {
-            var categories = CategoryRepository.GetCategories();
+            //var categories = CategoryRepository.GetCategories();
+           var categories  =  viewCategoriesUseCase.Execute();
             return View(categories);
 
         }
@@ -20,7 +49,7 @@ namespace demoMvcCore.Controllers
         {
 
             ViewBag.OnClick = "edit";
-            var category = CategoryRepository.GetCategoryById(id ?? 0);
+           var category =  viewSelectedCategoryUseCase.Execute(id ?? 0);
             return View(category);
 
 
@@ -31,7 +60,7 @@ namespace demoMvcCore.Controllers
         {
             if (ModelState.IsValid)
             {
-                CategoryRepository.UpdateCategory(category.CategoryId, category);
+                editCategoryUseCase.Execute(category.CategoryId, category);
                 return RedirectToAction(nameof(Index));
             }
             ViewBag.OnClick = "edit";
@@ -51,7 +80,7 @@ namespace demoMvcCore.Controllers
         {
             if(ModelState.IsValid)
             {
-                CategoryRepository.AddCategory(category);
+                addCategoryUseCase.Execute(category);
                 return RedirectToAction(nameof(Index));
 
             }
@@ -62,7 +91,7 @@ namespace demoMvcCore.Controllers
         
         public IActionResult Delete(int categoryId)
         {
-            CategoryRepository.DeleteCategory(categoryId);
+            deleteCategoryUseCase.Execute(categoryId);
             return RedirectToAction(nameof(Index));
         }
 

@@ -1,0 +1,134 @@
+﻿@using demoMvcCore.ViewModels
+@model SalesViewModel
+     @section title
+     {
+         <div class="row">
+
+             <div class="col-7"><h3>Cashier's Console</h3></div>
+             <div class="col-2"><label for="cashier">Cashier' Name</label></div>
+             <div class="col-3">
+
+                 @* Display Cashier's Name Here' *@
+
+
+                 @User?.Identity?.Name
+
+
+             <br />
+
+             </div>
+         </div>
+    
+
+
+
+     }
+
+
+<br />
+
+<div class="row">
+    <div class="col-4">
+        <div class="text-danger" asp-validation-summary="All"></div>
+        @*Category Selection*@
+        <select asp-for="SelectedCategoryId" class="form-control">
+            <option>Please Select</option>
+            @if (Model.Categories != null && Model.Categories.Count() > 0)
+            {
+                @foreach (var category in Model.Categories)
+                {
+                    <option value="@category.CategoryId">@category.Name</option>
+                }
+            }
+        </select>
+
+
+
+        <br />
+
+        <div id="productsPartial">
+            @*Products List*@
+
+
+        </div>
+        <br />
+        <div id="productDetailPartial">
+
+
+            @*Products Details*@
+        </div>
+        <div>
+            @*Sales form*@
+
+            <form method="post" asp-controller="sales" asp-action="sell" id="formSale">
+                <input asp-for="SelectedProductId" type="hidden"/>
+                <div class="form-group">
+                    <label asp-for="QuantityToSell"></label>
+                    <input asp-for="QuantityToSell" class="form-control" type="number" min="1"/>
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Submit"/>
+                </div>
+            </form>
+        </div>
+        </div>
+        <div class="col-6">
+            @*List of Transactions*@
+
+            @await Component.InvokeAsync("Transaction","Cashier1")
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script>
+        $(function () {
+            $("#formSale").hide()
+            $("#QuantityToSell").val("")
+
+            var selectedCategoryId = $("#SelectedCategoryId").val();
+            if (selectedCategoryId > 0) {
+
+                loadProducts(selectedCategoryId)
+            }
+         
+
+            $("#SelectedCategoryId").on("change", function () {
+
+                loadProducts($(this).val())
+            })
+
+            $("#productsPartial").on('click', '.product-row', function () {
+
+                $('.product-row').removeClass('highlight')
+
+                $(this).addClass('highlight')
+
+                var productId = $(this).attr('product-id')
+
+                $("#productDetailPartial").load("/sales/SellProductPartial", {productId: productId })
+
+
+                if (productId > 0) {
+                    $("#SelectedProductId").val(productId)
+                    $("#formSale").show()
+                }
+                else {
+                    $("#SelectedProductId").val("")
+                    $("#formSale").hide()
+                }
+                   
+            })
+
+        });
+
+
+        function loadProducts(categoryId) {
+            $("#productsPartial").load("/sales/ProductsByCategoryPartial", { categoryId: categoryId });
+            $("#productDetailPartial").html("");
+            $("#formSale").hide()
+        }
+
+    </script>
+}

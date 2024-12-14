@@ -1,8 +1,8 @@
 ﻿namespace demoMvcCore.Models
 {
-public class ProductsRepository
-        {
-            private static List<Product> _products = new List<Product>()
+    public class ProductsRepository
+    {
+        private static List<Product> _products = new List<Product>()
         {
             new Product { ProductId = 1, CategoryId = 1, Name = "Iced Tea", Quantity = 100, Price = 1.99 },
             new Product { ProductId = 2, CategoryId = 1, Name = "Canada Dry", Quantity = 200, Price = 1.99 },
@@ -10,13 +10,13 @@ public class ProductsRepository
             new Product { ProductId = 4, CategoryId = 2, Name = "White Bread", Quantity = 300, Price = 1.50 }
         };
 
-            public static void AddProduct(Product product)
-            {
+        public static void AddProduct(Product product)
+        {
             if (_products is not null && _products.Count() > 0)
             {
                 var maxId = _products.Max(x => x.ProductId);
                 product.ProductId = maxId + 1;
-              
+
             }
             else
             {
@@ -27,74 +27,79 @@ public class ProductsRepository
             _products.Add(product);
         }
 
-            public static List<Product> GetProducts(bool loadCategory = false)
+        public static List<Product> GetProducts(bool loadCategory = false)
         {
-            if(!loadCategory)
+            if (!loadCategory)
             {
                 return _products;
             }
             else
             {
-                if(_products !=null && _products.Count > 0 )
+                if (_products != null && _products.Count > 0)
                 {
                     _products.ForEach(x =>
                     {
-                        if(x.CategoryId.HasValue)
-                        x.Category = CategoryRepository.GetCategoryById(x.CategoryId.Value);
+                        if (x.CategoryId.HasValue)
+                            x.Category = CategoryRepository.GetCategoryById(x.CategoryId.Value);
                     });
                 }
             }
             return _products;
         }
 
-            public static Product? GetProductById(int productId,bool loadCategory=false)
+        public static Product? GetProductById(int productId, bool loadCategory = false)
+        {
+            var product = _products.FirstOrDefault(x => x.ProductId == productId);
+            if (product != null)
             {
-                var product = _products.FirstOrDefault(x => x.ProductId == productId);
-                if (product != null)
+                var prod = new Product
                 {
-                    var prod = new Product
-                    {
-                        ProductId = product.ProductId,
-                        Name = product.Name,
-                        Quantity = product.Quantity,
-                        Price = product.Price,
-                        CategoryId = product.CategoryId
-                    };
+                    ProductId = product.ProductId,
+                    Name = product.Name,
+                    Quantity = product.Quantity,
+                    Price = product.Price,
+                    CategoryId = product.CategoryId
+                };
 
-                if(loadCategory  && product.CategoryId.HasValue)
+                if (loadCategory && product.CategoryId.HasValue)
                 {
                     prod.Category = CategoryRepository.GetCategoryById(prod.CategoryId.Value);
                 }
 
                 return prod;
-                }
-
-                return null;
             }
 
-            public static void UpdateProduct(int productId, Product product)
-            {
-                if (productId != product.ProductId) return;
+            return null;
+        }
 
-                var productToUpdate = _products.FirstOrDefault(x => x.ProductId == productId);
-                if (productToUpdate != null)
-                {
-                    productToUpdate.Name = product.Name;
-                    productToUpdate.Quantity = product.Quantity;
-                    productToUpdate.Price = product.Price;
-                    productToUpdate.CategoryId = product.CategoryId;
-                }
-            }
+        public static void UpdateProduct(int productId, Product product)
+        {
+            if (productId != product.ProductId) return;
 
-            public static void DeleteProduct(int productId)
+            var productToUpdate = _products.FirstOrDefault(x => x.ProductId == productId);
+            if (productToUpdate != null)
             {
-                var product = _products.FirstOrDefault(x => x.ProductId == productId);
-                if (product != null)
-                {
-                    _products.Remove(product);
-                }
+                productToUpdate.Name = product.Name;
+                productToUpdate.Quantity = product.Quantity;
+                productToUpdate.Price = product.Price;
+                productToUpdate.CategoryId = product.CategoryId;
             }
         }
+
+        public static void DeleteProduct(int productId)
+        {
+            var product = _products.FirstOrDefault(x => x.ProductId == productId);
+            if (product != null)
+            {
+                _products.Remove(product);
+            }
+        }
+
+        public static List<Product> GetProductsByCategoryId(int categoryId)
+        {
+            return _products.Where(x => x.CategoryId == categoryId).ToList() ?? new List<Product>();
+        }
     }
+}
 
 

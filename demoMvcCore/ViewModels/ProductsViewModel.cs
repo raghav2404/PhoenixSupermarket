@@ -1,5 +1,7 @@
 ﻿
-using demoMvcCore.Models;
+
+
+using CoreBusiness;
 
 namespace demoMvcCore.ViewModels
 {

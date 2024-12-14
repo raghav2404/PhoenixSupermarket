@@ -1,4 +1,4 @@
-﻿@model Category
+﻿@model CoreBusiness.Category
 
 @{
     string onclick = ViewBag.OnClick ?? string.Empty;
@@ -8,9 +8,9 @@
 <form method="post" asp-controller="categories" asp-action="@onclick">
 
     @if (onclick?.ToLower() == "edit")
-        {
-    <input type="hidden" asp-for="@Model.CategoryId" />
-        }
+    {
+        <input type="hidden" asp-for="@Model.CategoryId" />
+    }
     <div class="tet-danger" asp-validation-summary="ModelOnly"></div>
     <div class="row mb-3">
         <div class="col-2">

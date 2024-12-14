@@ -1,0 +1,14 @@
+﻿@using System.Globalization
+@model CoreBusiness.Product
+
+<div class="form-group">
+    <label asp-for="Name"></label>
+    <input class="form-control" asp-for="Name" type="text" readonly />
+</div>
+<div class="form-group">
+    <label asp-for="Price"></label>
+    <input class="form-control" id="Price" asp-for="Price" type="text" readonly value="@String.Format(new CultureInfo("en-US"), "{0:C}",@Model.Price)" />
+</div>
+
+
+

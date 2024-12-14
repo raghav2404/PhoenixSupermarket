@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CategoriesUseCase\" />
+    <None Remove="DataStorePluginInterfaces\" />
+    <None Remove="ProductsUseCase\" />
+    <None Remove="TransactionsUseCase\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CategoriesUseCase\" />
+    <Folder Include="DataStorePluginInterfaces\" />
+    <Folder Include="ProductsUseCase\" />
+    <Folder Include="TransactionsUseCase\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CoreBusiness\CoreBusiness.csproj" />
+  </ItemGroup>
+</Project>

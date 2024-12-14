@@ -1,5 +1,4 @@
-﻿@using demoMvcCore.Models
-@model Category
+﻿@model CoreBusiness.Category
 @section title
 {
     @if (Model is not null)
@@ -10,9 +9,9 @@
 }
 
 @if (Model is not null)
-    {
+{
     <partial name="_Categories" model="@Model" />
-    }
+}
 
 
 
