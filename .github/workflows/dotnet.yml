@@ -15,7 +15,7 @@ jobs:
     env:
       DOTNET_VERSION: 8.0
       PUBLISH_DIR: ./publish
-      IMAGE_NAME: ragh2404/demomvcore  # Docker image name
+      IMAGE_NAME: raghav2404l/demomvcore  # Docker image name
 
     steps:
     # Step 1: Check out code
