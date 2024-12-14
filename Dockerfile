@@ -9,7 +9,7 @@ COPY ["demoMvcCore.sln", "./"]
 COPY ["demoMvcCore/demoMvcCore.csproj", "demoMvcCore/"]
 COPY ["UseCases/UseCases.csproj", "UseCases/"]
 COPY ["Plugins.DataStore.SQL/Plugins.DataStore.SQL.csproj", "Plugins.DataStore.SQL/"]
-COPY ["Plugins.DataStore.InMemory/Plugins.DataStore.InMemory.csproj", "Plugins.DataStore.InMemory/"]
+COPY ["Plugins/Plugins.DataStore.InMemory.csproj", "Plugins/"]
 COPY ["CoreBusiness/CoreBusiness.csproj", "CoreBusiness/"]
 
 # Restore dependencies
