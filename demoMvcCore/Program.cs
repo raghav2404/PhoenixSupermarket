@@ -9,7 +9,10 @@ using demoMvcCore.Areas.Identity.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.ListenAnyIP(80);  // Listen on port 80 for all incoming IP addresses
+});
 // Add services to the container.
 
 builder.Services.AddDbContext<MarketContext>(
